@@ -22,10 +22,9 @@ const blogLinks = [
 ]
 
 const projectLinks = [
-  { label: "camps.dev", href: "#" },
-  { label: "Blueprint design system", href: "#" },
-  { label: "Marquee logo ticker", href: "#" },
-  { label: "OKLCH theme tokens", href: "#" },
+  { label: "Zimo", href: "https://zimo.com.br/" },
+  { label: "Adviso", href: "https://adviso.com.br/" },
+  { label: "Study App", href: "https://study.app.br/" },
 ]
 
 const socialLinks = [
@@ -178,6 +177,9 @@ function FooterColumn({ title, links }: FooterColumnProps) {
           <li key={link.label}>
             <Link
               href={link.href}
+              {...(link.href.startsWith("http")
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="text-sm text-pretty text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
