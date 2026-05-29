@@ -4,6 +4,7 @@ import { Crosshair } from "@workspace/ui/components/crosshair"
 import { Frame } from "@workspace/ui/components/frame"
 
 import { Container } from "@/components/container"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const links = [
   { label: "Projects", href: "#projects" },
@@ -35,12 +36,15 @@ function Navbar() {
             ))}
           </nav>
 
-          <Link
-            href="#contact"
-            className="text-sm font-medium underline decoration-1 underline-offset-4 transition-colors hover:text-primary"
-          >
-            Get in contact
-          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggle className="-ml-1" />
+            <Link
+              href="#contact"
+              className="text-sm font-medium underline decoration-1 underline-offset-4 transition-colors hover:text-primary"
+            >
+              Get in contact
+            </Link>
+          </div>
         </Container>
 
         {/* crosshairs where the rails meet the navbar's bottom border */}
