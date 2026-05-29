@@ -73,12 +73,12 @@ For card index `i` (0–5), `col = i % 3`, `row = floor(i / 3)`:
 Crosshairs mark **every** rail × line intersection. The four outer corners are
 already provided by the two `FrameDivider`s. The remaining intersections, rendered
 on the lattice cells with `hidden lg:block` (inner-lattice marks only exist at
-`lg`):
+`lg`) — referenced by 0-based index `i`:
 
-- inner-rail tops (line T = header↔grid divider): `top-left` on cards 2 & 3
-- middle row line (M): `top-left` on cards 4, 5 & 6, plus `top-right` on card 6
+- inner-rail tops (line T = header↔grid divider): `top-left` on `i === 1`, `i === 2`
+- middle row line (M): `top-left` on `i === 3, 4, 5`, plus `top-right` on `i === 5`
   (right rail × M)
-- inner-rail bottoms (line B = closing divider): `bottom-left` on cards 5 & 6
+- inner-rail bottoms (line B = closing divider): `bottom-left` on `i === 4`, `i === 5`
 
 On mobile, stacked-card dividers get rail crosshairs (`top-left` + `top-right`,
 `lg:hidden`) for cards `i > 0`, matching the `Projects` mobile dividers.
