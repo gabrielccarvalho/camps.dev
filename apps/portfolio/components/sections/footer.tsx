@@ -29,9 +29,17 @@ const projectLinks = [
 ]
 
 const socialLinks = [
-  { label: "LinkedIn", href: "#", icon: LinkedinLogo },
-  { label: "GitHub", href: "#", icon: GithubLogo },
-  { label: "X", href: "#", icon: XLogo },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/gabrielcamposdecarvalho/",
+    icon: LinkedinLogo,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/gabrielccarvalho",
+    icon: GithubLogo,
+  },
+  { label: "X", href: "https://x.com/gabrielcdev", icon: XLogo },
 ]
 
 function Footer() {
@@ -93,6 +101,8 @@ function Footer() {
                     key={label}
                     href={href}
                     aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <Icon weight="fill" className="size-5" />
@@ -122,6 +132,8 @@ function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       <Icon
