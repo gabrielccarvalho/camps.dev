@@ -15,7 +15,7 @@ function Newsletter() {
     <BleedCard
       bleed={48}
       className="py-20 sm:py-28"
-      surfaceClassName="dark:bg-neutral-300"
+      surfaceClassName="dark:bg-neutral-400"
     >
       {/* Faint oversized glyph watermark, echoing the reference's depth. It
           positions against the card edges and is clipped by the card. */}
@@ -30,8 +30,8 @@ function Newsletter() {
           Subscribe to my newsletter
         </h2>
         <p className="mt-6 text-pretty text-background/60">
-          A periodic update about my life, recent blog posts, how-tos, and
-          discoveries.
+          Updates from the world of tech, insights I pick up along the way, and
+          new technologies worth trying — straight to your inbox.
         </p>
 
         <form
