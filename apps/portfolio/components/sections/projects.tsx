@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "@phosphor-icons/react"
 
@@ -8,39 +9,43 @@ import { Crosshair } from "@workspace/ui/components/crosshair"
 import { FrameDivider } from "@workspace/ui/components/frame"
 import { cn } from "@workspace/ui/lib/utils"
 
+type Project = {
+  id: string
+  title: string
+  description: string
+  tags: string[]
+  href: string
+  image?: string
+}
+
 // Placeholder project data — replace with real projects, screenshots, and links.
-const projects = [
+const projects: Project[] = [
   {
-    id: "project-one",
-    title: "Project One",
+    id: "zimo",
+    title: "Zimo",
     description:
-      "A short blurb about what this project is, the problem it solves, and your role in shipping it.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    href: "#",
+      "A personal assistant on WhatsApp that keeps track of all your finances, meetings, and schedule — right inside your chats.",
+    tags: ["Next.js", "React", "AI"],
+    href: "https://zimo.com.br/",
+    image: "/projects/zimo.png",
   },
   {
-    id: "project-two",
-    title: "Project Two",
+    id: "adviso",
+    title: "Adviso",
     description:
-      "Another placeholder description. Swap this out with a real project summary and a link to the live site or repo.",
-    tags: ["React", "Node", "Postgres"],
-    href: "#",
+      "An AI-focused tool to analyze and improve your ad campaigns across social media — Facebook, Instagram, TikTok, Google Ads, and many more.",
+    tags: ["Next.js", "React", "AI", "Node", "Postgres"],
+    href: "https://adviso.com.br/",
+    image: "/projects/adviso.png",
   },
   {
-    id: "project-three",
-    title: "Project Three",
+    id: "study-app",
+    title: "Study App",
     description:
-      "Describe the impact here — what changed, what you learned, and why it mattered to the people using it.",
-    tags: ["Astro", "Cloudflare"],
-    href: "#",
-  },
-  {
-    id: "project-four",
-    title: "Project Four",
-    description:
-      "One more placeholder so the sticky hand-off has enough rows to demonstrate the effect on screen.",
-    tags: ["Expo", "React Native"],
-    href: "#",
+      "A platform to gamify your study sessions. Log hours and compete with your friends in a fun way.",
+    tags: ["Next.js", "React", "AI", "Node", "Postgres"],
+    href: "https://study.app.br/",
+    image: "/projects/study-app.png",
   },
 ]
 
@@ -96,8 +101,18 @@ function Projects() {
               {/* crosshair where the inner rail crosses this divider */}
               <Crosshair position="top-left" className="hidden lg:block" />
 
-              {/* Replace with <Image /> once real screenshots exist. */}
-              <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-muted" />
+              {/* Real screenshot when available; otherwise a muted placeholder. */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-muted">
+                {project.image && (
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    fill
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
 
               <div className="flex items-start justify-between gap-4">
                 <p className="text-pretty text-muted-foreground">
@@ -105,6 +120,9 @@ function Projects() {
                 </p>
                 <Link
                   href={project.href}
+                  {...(project.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="group inline-flex shrink-0 items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Visit
