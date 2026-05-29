@@ -12,7 +12,11 @@ import { cn } from "@workspace/ui/lib/utils"
 // so it tracks the card's light/dark flip.
 function Newsletter() {
   return (
-    <BleedCard bleed={48} className="py-20 sm:py-28">
+    <BleedCard
+      bleed={48}
+      className="py-20 sm:py-28"
+      surfaceClassName="dark:bg-neutral-300"
+    >
       {/* Faint oversized glyph watermark, echoing the reference's depth. It
           positions against the card edges and is clipped by the card. */}
       <EnvelopeSimple
