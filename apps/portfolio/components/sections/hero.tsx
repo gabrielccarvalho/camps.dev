@@ -40,7 +40,7 @@ function Hero() {
           <h1 className="font-heading text-5xl font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl">
             Hello, I&apos;m Gabe
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-pretty text-foreground sm:text-xl">
             A software engineer shipping{" "}
             <span className="font-medium text-foreground">
               beautiful, useful
