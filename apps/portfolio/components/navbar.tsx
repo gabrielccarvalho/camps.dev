@@ -8,7 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 
 const links = [
   { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ]
 
