@@ -3,8 +3,8 @@ import { Frame, FrameDivider } from "@workspace/ui/components/frame"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/sections/hero"
 import { LogoTicker } from "@/components/sections/logo-ticker"
+import { Newsletter } from "@/components/sections/newsletter"
 import { Projects } from "@/components/sections/projects"
-import { SkillsBanner } from "@/components/sections/skills-banner"
 
 export default function Page() {
   return (
@@ -25,8 +25,8 @@ export default function Page() {
           <FrameDivider />
         </Frame>
 
-        {/* Skills banner opts out of the frame — full-bleed band with a violet glow. */}
-        <SkillsBanner />
+        {/* Newsletter opts out of the frame — full-bleed band with an inverse card. */}
+        <Newsletter />
       </main>
     </>
   )
