@@ -25,7 +25,13 @@ const skills: { name: string; icon: SimpleIcon }[] = [
 
 // Renders a simple-icons glyph in the current text color (no brand hex), keeping
 // every mark monochrome and on-token — consistent with the logo ticker silhouettes.
-function TechIcon({ icon, className }: { icon: SimpleIcon; className?: string }) {
+function TechIcon({
+  icon,
+  className,
+}: {
+  icon: SimpleIcon
+  className?: string
+}) {
   return (
     <svg
       role="img"
@@ -40,28 +46,45 @@ function TechIcon({ icon, className }: { icon: SimpleIcon; className?: string })
 
 function SkillsBanner() {
   return (
-    <section className="relative isolate overflow-hidden py-12">
+    <section className="relative isolate overflow-hidden pt-12">
       {/* Light violet backdrop covering the whole section. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-violet-500/10 to-transparent"
       />
 
+      {/* Vertical rails at the page column — run the full section height so they
+          connect the divider above, through the heading, into the grid (whose
+          own left/right borders sit on these same rails). */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-10 mx-auto w-full max-w-[1440px] border-x border-border"
+      />
+
       {/* Heading — padded inward from the rails. */}
       <Container className="relative z-10">
+        <p className="text-sm font-medium text-muted-foreground">Skills</p>
         <h2 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-          What I&apos;m great with
+          My tech stack of choice
         </h2>
+        <p className="mt-3 text-pretty text-muted-foreground">
+          Here are a few technologies that I&apos;m amazing at.
+        </p>
       </Container>
+
+      {/* Full-bleed line connecting the grid's top edge to the page width. */}
+      <div aria-hidden className="relative z-10 mt-8 border-t border-border" />
 
       {/* Tech lattice — 3 cells per row (→ 2 → 1 as the viewport narrows),
           aligned to the page rails so each cell is ~1440/3 wide. Cells are
-          transparent so the backdrop reads through. The wrapper draws the
-          top/left edges; each cell its right/bottom. Crosshairs mark every
-          grid intersection: top-left on all cells covers the top/left/interior
-          crossings; the .ch-* marks add the right rail (last column) and bottom
-          edge (last row), gated per breakpoint so nothing doubles up. */}
-      <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1440px] grid-cols-1 border-t border-l border-border sm:grid-cols-2 lg:grid-cols-3">
+          transparent so the backdrop reads through. The grid's top and bottom
+          edges run full-bleed (the lines above/below); the left rail comes from
+          the wrapper and each cell draws its right/bottom for the interior
+          lattice. Crosshairs mark every grid intersection: top-left on all cells
+          covers the top/left/interior crossings; the .ch-* marks add the right
+          rail (last column) and bottom edge (last row), gated per breakpoint so
+          nothing doubles up. */}
+      <div className="relative z-10 mx-auto grid w-full max-w-[1440px] grid-cols-1 border-l border-border sm:grid-cols-2 lg:grid-cols-3">
         {skills.map((skill) => (
           <div
             key={skill.name}
@@ -92,6 +115,9 @@ function SkillsBanner() {
           </div>
         ))}
       </div>
+
+      {/* Full-bleed line connecting the grid's bottom edge to the page width. */}
+      <div aria-hidden className="relative z-10 border-t border-border" />
     </section>
   )
 }
