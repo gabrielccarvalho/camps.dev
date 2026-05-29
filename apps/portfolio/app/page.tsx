@@ -10,7 +10,12 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <main>
+      {/* Clip (not hidden) horizontal overflow so the framing crosshairs — which
+          sit centered on the rails and poke a few px past the right rail when the
+          1440 column collapses to the viewport (<1440px) — don't trigger a
+          horizontal scrollbar. `clip` avoids creating a scroll container, so the
+          Projects sticky hand-off keeps working. */}
+      <main className="overflow-x-clip">
         <Frame className="[--frame-width:1440px]">
           <Hero />
           <FrameDivider />
