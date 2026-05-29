@@ -1,6 +1,7 @@
 import { Frame, FrameDivider } from "@workspace/ui/components/frame"
 
 import { Navbar } from "@/components/navbar"
+import { Blog } from "@/components/sections/blog"
 import { Hero } from "@/components/sections/hero"
 import { LogoTicker } from "@/components/sections/logo-ticker"
 import { Newsletter } from "@/components/sections/newsletter"
@@ -32,6 +33,12 @@ export default function Page() {
 
         {/* Newsletter opts out of the frame — full-bleed band with an inverse card. */}
         <Newsletter />
+
+        <Frame className="[--frame-width:1440px]">
+          <FrameDivider />
+          <Blog />
+          <FrameDivider />
+        </Frame>
       </main>
     </>
   )
