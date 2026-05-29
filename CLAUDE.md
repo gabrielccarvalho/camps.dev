@@ -60,14 +60,14 @@ The portfolio app itself exposes the same scripts (`next dev`, `next build`, etc
 ```
 app/
 ├── layout.tsx       # Root layout: fonts + ThemeProvider
-└── page.tsx         # Home page: <Navbar /> + <Hero />
+└── page.tsx         # Home page: Navbar + framed sections (Hero, ticker, Projects)
 components/
-├── navbar.tsx       # Site navbar
-├── container.tsx    # Max-width page container (max-w-6xl, px-6)
+├── navbar.tsx       # Site navbar (sticky, framed)
+├── container.tsx    # Centered content column (max-w-[1440px], px-6)
 ├── theme-provider.tsx
-└── sections/        # Page sections (hero.tsx, ...)
+└── sections/        # hero.tsx, logo-ticker.tsx, projects.tsx
 hooks/ · lib/        # App-local hooks and utilities
-public/              # Static assets (e.g. avatar.png)
+public/              # Static assets (avatar.png, logos/)
 ```
 
 `next.config.ts` sets `transpilePackages: ["@workspace/ui"]` so the shared package is
@@ -77,11 +77,14 @@ compiled by the app.
 
 The shared design system under `packages/ui/src`:
 
-- `components/` — ~55 shadcn components built on Base UI primitives.
+- `components/` — ~55 shadcn components built on Base UI primitives, plus custom
+  layout primitives: `frame.tsx` (`Frame` + `FrameDivider`) and `crosshair.tsx`
+  (`Crosshair`). See **Layout & framing** below.
 - `lib/utils.ts` — the `cn()` helper (`clsx` + `tailwind-merge`).
 - `hooks/` — shared hooks.
 - `styles/globals.css` — the single source of truth for Tailwind v4 setup and **all
-  design tokens**.
+  design tokens**. Also defines the `animate-marquee` utility (`--animate-marquee` +
+  keyframes), driven by a `--marquee-duration` variable.
 
 Exports are subpath-based (see `packages/ui/package.json`):
 
@@ -144,6 +147,48 @@ into Tailwind:
 | `--font-heading`| Figtree     | Headings (`font-heading`) |
 | `--font-sans`   | Inter       | Body / default sans |
 | `--font-mono`   | Geist Mono  | Monospace |
+
+## Layout & framing
+
+The site uses a "blueprint frame" aesthetic — a centered content column bounded by
+vertical guide **rails**, with crosshair `+` marks at line intersections. Three
+primitives in `@workspace/ui` implement it:
+
+- **`Crosshair`** — a positioned `+` mark; `position` is `top-left` | `top-right` |
+  `bottom-left` | `bottom-right` (centers the mark on that corner of the parent).
+- **`Frame`** — a full-bleed region that draws the vertical rails as a centered overlay
+  at `--frame-width` (CSS variable). Content inside gets rails; content outside stays
+  full-bleed. The site sets `--frame-width: 1440px` via `[--frame-width:1440px]`.
+- **`FrameDivider`** — a full-width horizontal rule with crosshairs where the rails
+  cross it (positioned by an inner centered `--frame-width` column). Place between
+  framed sections.
+
+Rules of thumb:
+
+- The content column is **1440px**: the `Frame`'s `--frame-width` and `Container`'s
+  `max-w-[1440px]` must agree. Sections needing rail-aligned dividers skip `Container`
+  and align to the rails directly (a `max-w-[1440px]` wrapper with no x-padding), padding
+  each cell inward instead.
+- **Section-boundary dividers are full-bleed** (`FrameDivider`); **dividers inside a
+  section are column-width** (a plain `border-t` spanning rail-to-rail).
+- A section **opts out** of the frame by living outside `<Frame>`. An unframed section in
+  the middle means splitting into two frames around it (that's how the logo ticker is a
+  full-bleed band between the hero frame and the projects frame).
+- Crosshairs mark every rail × divider intersection — outer rails and inner rails alike
+  (e.g. the projects' aside|content split).
+- Lines use the `border-border` token; crosshairs use `text-muted-foreground/40`.
+
+## Sections (`apps/portfolio/components/sections`)
+
+- **`hero.tsx`** — full-bleed within its frame, `h-[calc(100svh-12rem)]`. Indigo→violet
+  and teal blurred glow centered behind a faint grid; avatar on the right at `lg+`.
+- **`logo-ticker.tsx`** — seamless infinite `animate-marquee` of company logos. Logos
+  render as **uniform monochrome silhouettes via CSS `mask-image`**, which sidesteps each
+  SVG's native colors (white/colored logos all read the same). Full-bleed band, no rails.
+- **`projects.tsx`** — "Latest projects". Each project is its own grid row whose **name
+  pins on the left (`lg:sticky lg:top-24`) and hands off to the next** as you scroll —
+  pure CSS, no JS or scroll-spy. Rows are divided by column-width crosshair lines; the
+  header↔projects divider is full-bleed. Below `lg` it collapses to a single column.
 
 ## Commit messages
 
