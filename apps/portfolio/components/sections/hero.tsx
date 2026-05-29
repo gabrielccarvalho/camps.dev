@@ -8,7 +8,7 @@ import { Container } from "@/components/container"
 
 function Hero() {
   return (
-    <section className="relative h-[calc(100svh-4rem)] w-full overflow-hidden">
+    <section className="relative h-[calc(100svh-12rem)] w-full overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 left-1/2 h-[42rem] w-[42rem] -translate-x-[80%] -translate-y-1/2 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 opacity-20 blur-[120px]" />
         <div className="absolute top-1/2 left-1/2 h-[42rem] w-[42rem] -translate-x-[20%] -translate-y-1/2 rounded-full bg-teal-400 opacity-20 blur-[120px]" />

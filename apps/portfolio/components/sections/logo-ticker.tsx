@@ -1,5 +1,3 @@
-import { Container } from "@/components/container"
-
 const logos = [
   { name: "Fetchly", src: "/logos/fetchly.svg" },
   { name: "Cantoo", src: "/logos/cantoo.svg" },
@@ -15,15 +13,9 @@ const sequence = [...logos, ...logos, ...logos]
 
 function LogoTicker() {
   return (
-    <section className="border-t border-border/40 pt-8 pb-16">
-      <Container>
-        <p className="text-center text-sm font-medium text-foreground">
-          Companies I&apos;ve helped build
-        </p>
-      </Container>
-
-      <div className="group relative mt-14 flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <div className="flex w-max animate-marquee items-center group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+    <section className="py-12">
+      <div className="group relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="flex w-max animate-marquee items-center [--marquee-duration:70s] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
           {[...sequence, ...sequence].map((logo, index) => (
             <span
               key={index}
