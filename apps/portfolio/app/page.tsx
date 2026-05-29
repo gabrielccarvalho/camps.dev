@@ -2,6 +2,7 @@ import { Frame, FrameDivider } from "@workspace/ui/components/frame"
 
 import { Navbar } from "@/components/navbar"
 import { Blog } from "@/components/sections/blog"
+import { Footer } from "@/components/sections/footer"
 import { Hero } from "@/components/sections/hero"
 import { LogoTicker } from "@/components/sections/logo-ticker"
 import { Newsletter } from "@/components/sections/newsletter"
@@ -38,6 +39,13 @@ export default function Page() {
           <FrameDivider />
           <Blog />
           <FrameDivider />
+        </Frame>
+
+        {/* Footer holds its own contact band (with the hero's glow) and the
+            footer proper, divided internally. The Blog frame's closing divider
+            above doubles as this frame's top boundary. */}
+        <Frame className="[--frame-width:1440px]">
+          <Footer />
         </Frame>
       </main>
     </>
