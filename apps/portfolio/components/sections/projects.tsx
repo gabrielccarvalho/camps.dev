@@ -50,12 +50,12 @@ function Projects() {
       {/* Section header */}
       <div className="mx-auto w-full max-w-[1440px]">
         <div className="max-w-2xl px-6 py-16">
-          <p className="text-sm font-medium text-muted-foreground">Work</p>
+          <p className="text-sm font-medium text-muted-foreground">Projects</p>
           <h2 className="mt-2 font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-            Latest projects
+            Latest work
           </h2>
           <p className="mt-3 text-pretty text-muted-foreground">
-            A few things I&apos;ve shipped recently.
+            A few things I&apos;m proud to have shipped recently.
           </p>
         </div>
       </div>
@@ -110,7 +110,7 @@ function Projects() {
                   Visit
                   <ArrowUpRight
                     aria-hidden
-                    className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </Link>
               </div>
