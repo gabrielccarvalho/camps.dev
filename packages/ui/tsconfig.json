@@ -1,6 +1,12 @@
 {
   "extends": "@workspace/typescript-config/react-library.json",
   "compilerOptions": {
+    // This package ships TS source and is bundled by its consumers (Next.js
+    // `transpilePackages` + Turbopack), so resolve modules the way a bundler
+    // does. NodeNext can't follow the extensionless `export *` barrels that
+    // packages like @phosphor-icons/react ship in their type declarations.
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "paths": {
       "@workspace/ui/*": ["./src/*"]
     }
