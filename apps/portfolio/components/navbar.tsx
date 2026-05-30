@@ -4,12 +4,13 @@ import { Crosshair } from "@workspace/ui/components/crosshair"
 import { Frame } from "@workspace/ui/components/frame"
 
 import { Container } from "@/components/container"
+import { SmoothLink } from "@/components/smooth-link"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const links = [
-  { label: "Projects", href: "#projects" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/#contact" },
 ]
 
 function Navbar() {
@@ -26,24 +27,24 @@ function Navbar() {
 
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
             {links.map((link) => (
-              <Link
+              <SmoothLink
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
-              </Link>
+              </SmoothLink>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
             <ThemeToggle className="-ml-1" />
-            <Link
-              href="#contact"
+            <SmoothLink
+              href="/#contact"
               className="text-sm font-medium underline decoration-1 underline-offset-4 transition-colors hover:text-primary"
             >
               Get in contact
-            </Link>
+            </SmoothLink>
           </div>
         </Container>
 

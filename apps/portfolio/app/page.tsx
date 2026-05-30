@@ -1,6 +1,7 @@
 import { Frame, FrameDivider } from "@workspace/ui/components/frame"
 
 import { Navbar } from "@/components/navbar"
+import { ScrollToHash } from "@/components/scroll-to-hash"
 import { Blog } from "@/components/sections/blog"
 import { Footer } from "@/components/sections/footer"
 import { Hero } from "@/components/sections/hero"
@@ -12,6 +13,7 @@ export default function Page() {
   return (
     <>
       <Navbar />
+      <ScrollToHash />
       {/* Clip (not hidden) horizontal overflow so the framing crosshairs — which
           sit centered on the rails and poke a few px past the right rail when the
           1440 column collapses to the viewport (<1440px) — don't trigger a
