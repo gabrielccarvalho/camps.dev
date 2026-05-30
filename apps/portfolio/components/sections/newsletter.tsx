@@ -48,7 +48,7 @@ function Newsletter() {
               required
               name="email"
               autoComplete="email"
-              placeholder="bobloblaw@gmail.com"
+              placeholder="your-best-email@email.com"
               aria-label="Email address"
               className={cn(
                 "min-w-0 flex-1 bg-transparent text-sm text-background",
