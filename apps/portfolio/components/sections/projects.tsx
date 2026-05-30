@@ -119,13 +119,10 @@ function Projects() {
                   {project.description}
                 </p>
                 <Link
-                  href={project.href}
-                  {...(project.href.startsWith("http")
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
+                  href={`/projects/${project.id}`}
                   className="group inline-flex shrink-0 items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Visit
+                  Learn more
                   <ArrowUpRight
                     aria-hidden
                     className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
