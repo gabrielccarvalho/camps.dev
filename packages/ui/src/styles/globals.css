@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 @source "../../../apps/**/*.{ts,tsx}";
 @source "../../../components/**/*.{ts,tsx}";
@@ -139,4 +141,56 @@
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
     }
+}
+
+/* Article prose — written unlayered so these win over the typography plugin's
+   layered defaults. The plugin's `--tw-prose-*` variables are mapped onto our
+   OKLCH tokens; since the tokens already flip under `.dark`, prose tracks the
+   theme automatically (no `prose-invert` needed). */
+.prose {
+  --tw-prose-body: var(--muted-foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--border);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--border);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-pre-bg: var(--muted);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+/* Anchor jumps clear the sticky navbar. */
+.prose :is(h1, h2, h3, h4) {
+  scroll-margin-top: 6rem;
+}
+
+/* Inline code: subtle token-driven chip; drop the plugin's backtick quotes. */
+.prose :not(pre) > code {
+  background-color: var(--muted);
+  border-radius: 0.25rem;
+  padding: 0.15em 0.35em;
+  font-weight: 500;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: "";
+}
+
+/* rehype-pretty-code dual themes: tokens carry --shiki-light / --shiki-dark
+   variables (no direct color), so apply each per theme. Backgrounds are owned
+   by --tw-prose-pre-bg. */
+[data-rehype-pretty-code-figure] code[data-theme*=" "],
+[data-rehype-pretty-code-figure] code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+.dark [data-rehype-pretty-code-figure] code[data-theme*=" "],
+.dark [data-rehype-pretty-code-figure] code[data-theme*=" "] span {
+  color: var(--shiki-dark);
 }
