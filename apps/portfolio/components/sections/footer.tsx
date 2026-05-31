@@ -12,20 +12,7 @@ import { FrameDivider } from "@workspace/ui/components/frame"
 import { cn } from "@workspace/ui/lib/utils"
 
 import { Container } from "@/components/container"
-
-// All links are mocked for now — point them at real routes once they exist.
-const blogLinks = [
-  { label: "Building a blueprint-frame layout in Tailwind v4", href: "#" },
-  { label: "Server Components, one year in", href: "#" },
-  { label: "Designing with OKLCH color tokens", href: "#" },
-  { label: "A monorepo that stays out of your way", href: "#" },
-]
-
-const projectLinks = [
-  { label: "Zimo", href: "https://zimo.com.br/" },
-  { label: "Adviso", href: "https://adviso.com.br/" },
-  { label: "Study App", href: "https://study.app.br/" },
-]
+import { getAllArticles } from "@/lib/content"
 
 const socialLinks = [
   {
@@ -42,6 +29,23 @@ const socialLinks = [
 ]
 
 function Footer() {
+  // The 5 most recent blog posts, newest first (getAllArticles sorts by date).
+  const blogLinks = getAllArticles("blog")
+    .slice(0, 5)
+    .map((article) => ({
+      label: article.title,
+      href: `/blog/${article.slug}`,
+    }))
+
+  // The 5 most recent project deep-dives, newest first, linking to their
+  // internal article pages (same routing as the Projects section CTA).
+  const projectLinks = getAllArticles("projects")
+    .slice(0, 5)
+    .map((article) => ({
+      label: article.title,
+      href: `/projects/${article.slug}`,
+    }))
+
   return (
     <footer>
       {/* Part 1 — Contact band. Reuses the hero's layered glow (indigo→violet +
