@@ -9,45 +9,7 @@ import { Crosshair } from "@workspace/ui/components/crosshair"
 import { FrameDivider } from "@workspace/ui/components/frame"
 import { cn } from "@workspace/ui/lib/utils"
 
-type Project = {
-  id: string
-  title: string
-  description: string
-  tags: string[]
-  href: string
-  image?: string
-}
-
-// Placeholder project data — replace with real projects, screenshots, and links.
-const projects: Project[] = [
-  {
-    id: "zimo",
-    title: "Zimo",
-    description:
-      "A personal assistant on WhatsApp that keeps track of all your finances, meetings, and schedule — right inside your chats.",
-    tags: ["Next.js", "React", "AI"],
-    href: "https://zimo.com.br/",
-    image: "/projects/zimo.png",
-  },
-  {
-    id: "adviso",
-    title: "Adviso",
-    description:
-      "An AI-focused tool to analyze and improve your ad campaigns across social media — Facebook, Instagram, TikTok, Google Ads, and many more.",
-    tags: ["Next.js", "React", "AI", "Node", "Postgres"],
-    href: "https://adviso.com.br/",
-    image: "/projects/adviso.png",
-  },
-  {
-    id: "study-app",
-    title: "Study App",
-    description:
-      "A platform to gamify your study sessions. Log hours and compete with your friends in a fun way.",
-    tags: ["Next.js", "React", "AI", "Node", "Postgres"],
-    href: "https://study.app.br/",
-    image: "/projects/study-app.png",
-  },
-]
+import { projects } from "@/lib/projects"
 
 function Projects() {
   return (
@@ -119,10 +81,13 @@ function Projects() {
                   {project.description}
                 </p>
                 <Link
-                  href={`/projects/${project.id}`}
+                  href={project.hasPost ? `/blog/${project.id}` : project.href}
+                  {...(project.hasPost
+                    ? {}
+                    : { target: "_blank", rel: "noopener noreferrer" })}
                   className="group inline-flex shrink-0 items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Learn more
+                  {project.hasPost ? "Learn more" : "Visit site"}
                   <ArrowUpRight
                     aria-hidden
                     className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

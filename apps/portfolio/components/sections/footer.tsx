@@ -13,6 +13,13 @@ import { cn } from "@workspace/ui/lib/utils"
 
 import { Container } from "@/components/container"
 import { getAllArticles } from "@/lib/content"
+import { projects } from "@/lib/projects"
+
+// Featured projects — link to the writeup when one exists, else the live site.
+const projectLinks = projects.map((project) => ({
+  label: project.title,
+  href: project.hasPost ? `/blog/${project.id}` : project.href,
+}))
 
 const socialLinks = [
   {
@@ -35,15 +42,6 @@ function Footer() {
     .map((article) => ({
       label: article.title,
       href: `/blog/${article.slug}`,
-    }))
-
-  // The 5 most recent project deep-dives, newest first, linking to their
-  // internal article pages (same routing as the Projects section CTA).
-  const projectLinks = getAllArticles("projects")
-    .slice(0, 5)
-    .map((article) => ({
-      label: article.title,
-      href: `/projects/${article.slug}`,
     }))
 
   return (
