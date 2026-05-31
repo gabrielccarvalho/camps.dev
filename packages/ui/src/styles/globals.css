@@ -171,6 +171,16 @@
   scroll-margin-top: 6rem;
 }
 
+/* Mobile readability: never let content push past the column. Code blocks
+   scroll horizontally; long words/URLs wrap instead of overflowing. */
+.prose :is(pre, table) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.prose :is(p, li, h1, h2, h3, h4, blockquote) {
+  overflow-wrap: break-word;
+}
+
 /* Inline code: subtle token-driven chip; drop the plugin's backtick quotes. */
 .prose :not(pre) > code {
   background-color: var(--muted);

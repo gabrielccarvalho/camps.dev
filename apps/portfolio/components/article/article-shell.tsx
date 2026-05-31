@@ -63,8 +63,10 @@ function ArticleShell({ label, article, headerAction }: ArticleShellProps) {
           <ArticleToc items={article.toc} />
         </aside>
 
-        {/* Prose column (right), separated by the inner rail. */}
-        <div className="relative px-6 py-10 lg:border-l lg:border-border lg:py-16 lg:pl-12">
+        {/* Prose column (right), separated by the inner rail. `min-w-0` lets the
+            column shrink below its content's intrinsic width so long code lines
+            scroll inside their block instead of blowing out the mobile layout. */}
+        <div className="relative min-w-0 px-6 py-10 lg:border-l lg:border-border lg:py-16 lg:pl-12">
           {/* crosshair where the inner rail crosses the top divider */}
           <Crosshair position="top-left" className="hidden lg:block" />
           <ArticleBody content={article.content} />
