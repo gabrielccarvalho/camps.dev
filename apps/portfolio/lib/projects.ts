@@ -35,7 +35,7 @@ export const projects: ShowcaseProject[] = [
     description:
       "A personal assistant on WhatsApp that keeps track of all your finances, meetings, and schedule — right inside your chats.",
     tags: ["Next.js", "React", "AI"],
-    href: "https://zimo.com.br/",
+    href: "https://zimo.app.br/",
     image: "/projects/zimo.png",
   },
 ]
