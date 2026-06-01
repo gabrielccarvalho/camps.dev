@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <ArticleShell label="Writing" article={article} headerAction={action} />
+        <ArticleShell article={article} headerAction={action} />
         <Frame className="[--frame-width:1440px]">
           <Footer />
         </Frame>

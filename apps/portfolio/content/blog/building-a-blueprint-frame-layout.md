@@ -1,19 +1,25 @@
 ---
-title: "Building a blueprint-frame layout in Tailwind v4"
-description: "How the rails, dividers, and crosshairs on this site are built with pure CSS — and the design research (plus the Vercel-era trend) that explains why a visible grid earns its keep."
+title: "Building a blueprint-frame layout"
+description: "The design thinking behind a visible grid — faint rails, ruled dividers, crosshair marks — and why making layout structure visible helps people read an interface. Plus how to build one with almost no JavaScript."
 date: "2026-05-20"
 author: "Gabriel Carvalho"
 authorImage: "/authors/gabriel-carvalho.jpeg"
 cover: "/blog/blueprint-frame.svg"
-tags: ["Tailwind", "CSS", "Layout", "Design"]
+tags: ["Design", "Layout", "CSS", "Tailwind"]
 ---
 
 This site is wrapped in a "blueprint frame" — a centered content column bounded by
-faint vertical rails, with little crosshair marks wherever a line meets another. None of
-it needs JavaScript. Here's how the pieces fit together — and, further down, why a layout
-this visibly structured is worth the trouble.
+faint vertical rails, with little crosshair marks wherever a line meets another. It's a
+deliberate design choice, not decoration: a way of making the grid that underlies every
+good layout *visible* instead of merely implied. This post is about the design thinking
+behind that decision — why a visibly structured layout earns its keep — and then how the
+pieces fit together (almost entirely without JavaScript).
 
 ## The content column
+
+The implementation below is React with utility classes, but nothing about the idea
+depends on the framework — it's a handful of absolutely-positioned lines over a centered
+column, and the same thinking translates to plain CSS or anything else.
 
 Everything important lives inside a single 1440px column. A `Frame` component draws
 two continuous vertical rails at that column's edges as a centered overlay, while the

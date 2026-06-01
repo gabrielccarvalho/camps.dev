@@ -1,6 +1,6 @@
 ---
 title: "Adviso"
-description: "An AI-focused tool to analyze and improve your ad campaigns across social media — Facebook, Instagram, TikTok, Google Ads, and many more."
+description: "How I developed and launched an AI-focused tool to analyze and improve ad campaigns across social media — Facebook, Instagram, TikTok, Google Ads, and many more."
 date: "2026-03-02"
 author: "Gabriel Carvalho"
 authorImage: "/authors/gabriel-carvalho.jpeg"
