@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr"
 
-import { Button } from "@workspace/ui/components/button"
+import { buttonVariants } from "@workspace/ui/components/button"
 
 import { Container } from "@/components/container"
 
@@ -50,9 +50,14 @@ function Hero() {
             turning ideas into polished products people actually love to use.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-6">
-            <Button size="lg">Contact</Button>
+            <a
+              href="mailto:gabrielccarvalhopro@gmail.com"
+              className={buttonVariants({ size: "lg" })}
+            >
+              Contact
+            </a>
             <Link
-              href="#builds"
+              href="#projects"
               className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
               Check my builds

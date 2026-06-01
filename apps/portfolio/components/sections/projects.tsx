@@ -13,7 +13,7 @@ import { projects } from "@/lib/projects"
 
 function Projects() {
   return (
-    <section id="projects">
+    <section id="projects" className="scroll-mt-24">
       {/* Section header */}
       <div className="mx-auto w-full max-w-[1440px]">
         <div className="max-w-2xl px-6 py-16">
